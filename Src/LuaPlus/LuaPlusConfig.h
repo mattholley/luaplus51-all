@@ -11,13 +11,17 @@
 #define LUAPLUS__LUAPLUS_CONFIG_H
 
 #ifndef LUA_TILDE_DEBUGGER
-#if defined(WIN32)  ||  defined(WIN64)
+#if defined(_WIN32)
 #define LUA_TILDE_DEBUGGER 1
 #endif
 #endif /* LUA_TILDE_DEBUGGER */
 
 #ifndef LUA_FASTREF_SUPPORT
+#if LUA_VERSION_NUM <= 501
 #define LUA_FASTREF_SUPPORT 1
+#else
+#define LUA_FASTREF_SUPPORT 0
+#endif
 #endif /* LUA_FASTREF_SUPPORT */
 
 #ifndef LUA_EXT_HEXADECIMAL
